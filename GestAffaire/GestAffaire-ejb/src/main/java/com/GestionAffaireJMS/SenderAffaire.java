@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.archetypeexample.sharedaffaire.sharedaffaire;
-import java.io.Serializable;
-import java.util.ArrayList;
+package com.GestionAffaireJMS;
+
+import com.sharedaffaire.Affaire;
+
 /**
  *
  * @author Raph
  */
-public class Affaire implements Serializable {
-    
-    private int numAffaire;
+public class SenderAffaire {
+    Affaire a = new Affaire();
     
 }

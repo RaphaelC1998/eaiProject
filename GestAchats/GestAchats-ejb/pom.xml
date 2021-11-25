@@ -2,17 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-    <artifactId>GestAffaire</artifactId>
+    <artifactId>GestAchats</artifactId>
     <groupId>com.ArchetypeExample</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
 
     <groupId>com.ArchetypeExample</groupId>
-    <artifactId>GestAffaire-ejb</artifactId>
+    <artifactId>GestAchats-ejb</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>ejb</packaging>
 
-    <name>GestAffaire-ejb</name>
+    <name>GestAchats-ejb</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -20,12 +20,6 @@
     </properties>
 
     <dependencies>
-         <dependency>
-            <groupId>com.ArchetypeExample</groupId>
-            <artifactId>SharedAffaire</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>jar</type>
-        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
