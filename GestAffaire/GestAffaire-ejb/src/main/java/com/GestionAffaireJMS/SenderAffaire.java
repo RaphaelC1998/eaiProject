@@ -14,4 +14,9 @@ import com.sharedaffaire.Affaire;
 public class SenderAffaire {
     Affaire a = new Affaire();
     
+    public static void main(String[] args) {
+    System.out.println("dans le main");
+    }
+    
+    
 }
