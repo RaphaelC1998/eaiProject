@@ -5,3 +5,6 @@
 /GestAffaire/GestAffaire-web/target/
 /GestAffaire/GestAffaire-ear/target/
 /SharedAffaire/target/
+/SharedCommande/target/
+/testJMSEai/nbproject/private/
+/testJMSEai/build/

@@ -21,10 +21,10 @@
 
     <dependencies>
          <dependency>
-             <groupId>com.ArchetypeExample</groupId>
-         <artifactId>SharedAffaire</artifactId>
-         <version>1.0-SNAPSHOT</version>
-         <type>jar</type>
+            <groupId>com.ArchetypeExample</groupId>
+            <artifactId>SharedAffaire</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
          </dependency>
         <dependency>
             <groupId>javax</groupId>

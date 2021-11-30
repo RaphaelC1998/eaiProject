@@ -3,9 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.achatsJMS;
+package testjmseai;
 
-import com.sharedcommande.Commande;
+/**
+ *
+ * @author Raph
+ */
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jms.Connection;
@@ -21,49 +25,14 @@ import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+public class TestJMSEai {
 
-/**
- *
- * @author Raph
- */
-public class SenderAchats {
-    /*
-    private Message createJMSMessageForDIFFUSION_COMMANDE(Session session, Object messageData) throws JMSException {
-        ObjectMessage om = session.createObjectMessage((ArrayList<Commande>)messageData);
-        return om;
-    }
-
-    public void sendJMSMessageToDIFFUSION_TITRES(Object messageData) throws JMSException, NamingException {
-        Context c = new InitialContext();
-        ConnectionFactory cf = (ConnectionFactory) c.lookup("CONNECTION_FACTORY_M2_EAI");
-        Connection conn = null;
-        Session s = null;
-        try {
-            conn = cf.createConnection();
-            s = conn.createSession(false, s.AUTO_ACKNOWLEDGE);
-            Destination destination = (Destination) c.lookup("DIFFUSION_TITRES");
-            MessageProducer mp = s.createProducer(destination);
-            mp.send(createJMSMessageForDIFFUSION_COMMANDE(s, messageData));
-        } finally {
-            if (s != null) {
-                try {
-                    s.close();
-                } catch (JMSException e) {
-                    Logger.getLogger(this.getClass().getName()).log(Level.WARNING, "Cannot close session", e);
-                }
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-    }
-    
-    
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-           
-        Commande c = new Commande();
-        
-        Context context = null;
+        // TODO code application logic here
+         Context context = null;
         ConnectionFactory factory = null;
         Connection connection = null;
         String factoryName = "jms/myConnectionFactory";
@@ -72,7 +41,7 @@ public class SenderAchats {
         int count = 5;
         Session session = null;
         MessageProducer sender = null;
-         
+        
             try{
         context = new InitialContext();
         
@@ -90,7 +59,7 @@ public class SenderAchats {
         
         connection.start();
         
-        String text = "toto";
+        String text = "toest";
         
         for (int i = 0; i<count; ++i){
             TextMessage message = session.createTextMessage();
@@ -103,7 +72,6 @@ public class SenderAchats {
         } catch (JMSException ex) {
             Logger.getLogger(JMSConsumer.class.getName()).log(Level.SEVERE, null, ex);
         }
-                     
-    }   */ 
+    }
     
 }
