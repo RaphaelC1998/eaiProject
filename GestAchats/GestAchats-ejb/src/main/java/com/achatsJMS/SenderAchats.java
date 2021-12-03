@@ -6,6 +6,7 @@
 package com.achatsJMS;
 
 import com.sharedcommande.Commande;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.jms.Connection;
@@ -16,6 +17,7 @@ import javax.jms.JMSConsumer;
 import javax.jms.JMSException;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
+import javax.jms.ObjectMessage;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.naming.Context;
@@ -27,13 +29,13 @@ import javax.naming.NamingException;
  * @author Raph
  */
 public class SenderAchats {
-    /*
+    
     private Message createJMSMessageForDIFFUSION_COMMANDE(Session session, Object messageData) throws JMSException {
         ObjectMessage om = session.createObjectMessage((ArrayList<Commande>)messageData);
         return om;
     }
 
-    public void sendJMSMessageToDIFFUSION_TITRES(Object messageData) throws JMSException, NamingException {
+    public void sendJMSMessageToGESTIONAFFAIRE(Object messageData) throws JMSException, NamingException {
         Context c = new InitialContext();
         ConnectionFactory cf = (ConnectionFactory) c.lookup("CONNECTION_FACTORY_M2_EAI");
         Connection conn = null;
@@ -104,6 +106,6 @@ public class SenderAchats {
             Logger.getLogger(JMSConsumer.class.getName()).log(Level.SEVERE, null, ex);
         }
                      
-    }   */ 
+    }   
     
 }

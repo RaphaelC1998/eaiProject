@@ -5,6 +5,7 @@
  */
 package com.achatsJMS;
 
+import com.achats.GestionAchat;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.jms.Message;
@@ -23,6 +24,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import com.sharedcommande.Commande;
+import javax.jms.ObjectMessage;
 
 /**
  *
@@ -33,12 +35,25 @@ import com.sharedcommande.Commande;
 })
 public class ReceiverAchats implements MessageListener {
     
+    GestionAchat sAchat;
     public ReceiverAchats() {
+        sAchat = new GestionAchat();
     }
     
     @Override
     public void onMessage(Message message) {
         System.err.println("message recu");
+         if (message instanceof ObjectMessage){
+             ObjectMessage object = (ObjectMessage) message;
+             Commande c;
+            try {
+                c = (Commande) object.getObject();
+                sAchat.traiterCommande(c);
+            } catch (JMSException ex) {
+                Logger.getLogger(ReceiverAchats.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             
+         }
          if (message instanceof TextMessage){
                 TextMessage text = (TextMessage) message;
             try {
