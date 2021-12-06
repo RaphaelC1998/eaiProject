@@ -90,11 +90,12 @@ public class PoseResource {
      * http://localhost:8080/PoseWeb-web/webresources/Pose/0?etat=termine
      */
     @PUT
-    @Path("{idCompte}")
+    @Path("{idPose}")
     @Produces(MediaType.APPLICATION_JSON)
     public String putJson(@PathParam("idPose") String idPose, @QueryParam("etat") String etat) {
         int idcpt = Integer.parseInt(idPose);
         this.poseBean.setEtatPose(etat, idcpt);
+        System.out.println("here");
         return this.gson.toJson(this.poseBean.getPosition(Integer.parseInt(idPose)));
     }
 

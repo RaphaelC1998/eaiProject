@@ -16,7 +16,7 @@ public class Pose {
     int idPose;
     Date dateDePose;
     int idEquipePoseur;
-    String statutPose;
+    private String statutPose;
 
     public String getStatutPose() {
         return statutPose;
@@ -29,7 +29,7 @@ public class Pose {
     public Pose(int idPose, int idEquipePoseur) {
         this.idPose = idPose;
         this.idEquipePoseur = idEquipePoseur;
-        this.statutPose = statutPose;
+        this.statutPose = "debut";
     }
 
     public int getIdPose() {

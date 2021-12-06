@@ -29,14 +29,22 @@ public class GestionAchat implements GestionAchatLocal {
     // "Insert Code > Add Business Method")
     
     public static void genererCommande() {
-        Commande c = new Commande();
+        Commande c = new Commande(1);
     }
     
     public void traiterCommande(Commande commande){
-        Boolean accepter = true ;
-       // accepter = verifAccepter();
+       Boolean accepter = true ;
+       accepter = verifAccepter(commande);
        Pair<Commande, Boolean> pairAcceptation = new Pair<>(commande, accepter);
-       //return pairAcceptation;
+       System.out.println("boolean " + accepter);
+       senderCommande(pairAcceptation);
+    }
+    
+    public boolean verifAccepter(Commande commande){
+        if (commande.getCote() < 100){
+            return true;
+        }
+        return false;
     }
     
     public void senderCommande(Pair pCommandeValidation){

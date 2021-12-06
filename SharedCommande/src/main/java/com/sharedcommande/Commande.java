@@ -5,14 +5,29 @@
  */
 package com.sharedcommande;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Raph
  */
-public class Commande {
+public class Commande  implements Serializable{
+    private int idCommande;
     private String referenceCatalogue;
     private int cote;
     private int montantNegocie;
+
+    public Commande(int idCommande) {
+        this.idCommande = idCommande;
+    }
+
+    public int getIdCommande() {
+        return idCommande;
+    }
+
+    public void setIdCommande(int idCommande) {
+        this.idCommande = idCommande;
+    }
 
     public String getReferenceCatalogue() {
         return referenceCatalogue;

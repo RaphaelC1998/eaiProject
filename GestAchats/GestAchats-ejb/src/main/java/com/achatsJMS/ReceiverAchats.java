@@ -24,14 +24,19 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import com.sharedcommande.Commande;
+import java.util.ArrayList;
+import javax.jms.BytesMessage;
 import javax.jms.ObjectMessage;
+import javax.jms.StreamMessage;
 
 /**
  *
  * @author Raph
  */
-@MessageDriven(mappedName = "FileTest", activationConfig = {
-    @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
+@MessageDriven(activationConfig = {
+    @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "FileCommande")
+    ,
+        @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
 })
 public class ReceiverAchats implements MessageListener {
     
@@ -42,18 +47,7 @@ public class ReceiverAchats implements MessageListener {
     
     @Override
     public void onMessage(Message message) {
-        System.err.println("message recu");
-         if (message instanceof ObjectMessage){
-             ObjectMessage object = (ObjectMessage) message;
-             Commande c;
-            try {
-                c = (Commande) object.getObject();
-                sAchat.traiterCommande(c);
-            } catch (JMSException ex) {
-                Logger.getLogger(ReceiverAchats.class.getName()).log(Level.SEVERE, null, ex);
-            }
-             
-         }
+        System.err.println("Message recu");
          if (message instanceof TextMessage){
                 TextMessage text = (TextMessage) message;
             try {
@@ -61,9 +55,20 @@ public class ReceiverAchats implements MessageListener {
             } catch (JMSException ex) {
                 Logger.getLogger(ReceiverAchats.class.getName()).log(Level.SEVERE, null, ex);
             }
-            }else if(message != null){
-                System.out.println("Received non text message");
-            }
+         }
+         if (message instanceof ObjectMessage) {
+                ObjectMessage object = (ObjectMessage) message;
+                System.out.println("Object message : " + object);       
+                try {
+                Commande commande = (Commande) object.getObject();
+                //APPEL METIER                
+                sAchat.traiterCommande(commande);
+            } catch (JMSException ex) {
+                Logger.getLogger(ReceiverAchats.class.getName()).log(Level.SEVERE, null, ex);
+            }           
+        }else if(message != null){
+            System.out.println("Received non text receiver Achats");
+        }
     }
     
 }
