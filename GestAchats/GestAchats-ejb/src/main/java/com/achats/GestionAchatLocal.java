@@ -5,6 +5,8 @@
  */
 package com.achats;
 
+import com.sharedcommande.Commande;
+import javafx.util.Pair;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +15,9 @@ import javax.ejb.Local;
  */
 @Local
 public interface GestionAchatLocal {
+   public void traiterCommande(Commande commande);
+   public boolean verifAccepter(Commande commande);
+   public void senderCommande(Pair pCommandeValidation);
+           
     
 }

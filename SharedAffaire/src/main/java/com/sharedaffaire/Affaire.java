@@ -14,8 +14,30 @@ public class Affaire implements Serializable {
     private int numAffaire;
     private String nomClient;
     private String prenomClient;
+    private String adressePostale;
     private String mail;
     private int telephone;
+    private double coordonneeSpatiale;
+
+    public Affaire(int numAffaire, String nomClient, String prenomClient, String adressePostale, String mail, int telephone, double coordonneeSpatiale) {
+        this.numAffaire = numAffaire;
+        this.nomClient = nomClient;
+        this.prenomClient = prenomClient;
+        this.adressePostale = adressePostale;
+        this.mail = mail;
+        this.telephone = telephone;
+        this.coordonneeSpatiale = coordonneeSpatiale;
+    }
+
+  
+
+    public double getCoordonneeSpatiale() {
+        return coordonneeSpatiale;
+    }
+
+    public void setCoordonneeSpatiale(double coordonneeSpatiale) {
+        this.coordonneeSpatiale = coordonneeSpatiale;
+    }
 
     public int getNumAffaire() {
         return numAffaire;

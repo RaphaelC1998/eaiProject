@@ -28,10 +28,9 @@ public class GestionAchat implements GestionAchatLocal {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
-    public static void genererCommande() {
-        Commande c = new Commande(1);
-    }
     
+  
+    @Override
     public void traiterCommande(Commande commande){
        Boolean accepter = true ;
        accepter = verifAccepter(commande);
@@ -40,6 +39,7 @@ public class GestionAchat implements GestionAchatLocal {
        senderCommande(pairAcceptation);
     }
     
+    @Override
     public boolean verifAccepter(Commande commande){
         if (commande.getCote() < 100){
             return true;
@@ -47,6 +47,7 @@ public class GestionAchat implements GestionAchatLocal {
         return false;
     }
     
+    @Override
     public void senderCommande(Pair pCommandeValidation){
         SenderAchats sAchat = new SenderAchats();
         try {
