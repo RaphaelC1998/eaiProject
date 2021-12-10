@@ -33,14 +33,21 @@ public class GestionAffaire implements GestionAffaireLocal {
     
     @Override
     public void createAffaire(String nomClient, String prenomClient, String adressePostale, String adresseMail,
-            int telephone, double coordonneeSpatiale){
-       Affaire a = new Affaire(idTAffaire, nomClient, prenomClient, adressePostale,adresseMail,telephone, coordonneeSpatiale);
+            int telephone, int coordonneeSpatiale){
+              
        idTAffaire = idTAffaire+1;
+       System.out.println("ff");
+       System.out.println("a Affaire");
+       //Affaire ar = new Affaire(1, "v","v","v","v",3,3);
+       Affaire a = new Affaire(idTAffaire, nomClient, prenomClient, adressePostale,adresseMail,telephone, coordonneeSpatiale);
+       
        senderAffaireSujet(a);
+       System.out.println("a Affaire");
     }
     
     @Override
     public void senderAffaireSujet(Affaire affaire){
+        System.out.println("dans sender");
         SenderMAJSujetAffaire sAchat = new SenderMAJSujetAffaire();
         try {
             sAchat.sendJMSMessageToSUJET_AFFAIRE(affaire);
@@ -49,6 +56,11 @@ public class GestionAffaire implements GestionAffaireLocal {
         } catch (NamingException ex) {
             Logger.getLogger(GestionAffaire.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    @Override
+    public void redirigerCommandeAchats(Commande Commande){
+        
     }
 
     // Add business logic below. (Right-click in editor and choose

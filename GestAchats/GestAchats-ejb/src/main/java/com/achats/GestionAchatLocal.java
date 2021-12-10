@@ -15,7 +15,7 @@ import javax.ejb.Local;
  */
 @Local
 public interface GestionAchatLocal {
-   public void traiterCommande(Commande commande);
+   public void traiterCommande(Commande commande, Boolean accepter);
    public boolean verifAccepter(Commande commande);
    public void senderCommande(Pair pCommandeValidation);
            

@@ -62,7 +62,7 @@ public class ReceiverAchats implements MessageListener {
                 try {
                 Commande commande = (Commande) object.getObject();
                 //APPEL METIER                
-                sAchat.traiterCommande(commande);
+                //sAchat.traiterCommande(commande, true);
             } catch (JMSException ex) {
                 Logger.getLogger(ReceiverAchats.class.getName()).log(Level.SEVERE, null, ex);
             }           

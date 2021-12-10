@@ -6,6 +6,7 @@
 package com.GestionAffaireJMS;
 
 import GestionAffaire.GestionAffaire;
+import com.sharedcommande.Commande;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.ActivationConfigProperty;
@@ -45,6 +46,11 @@ public class ReceiverAffaire implements MessageListener {
          }
          if (message instanceof ObjectMessage) {
                 ObjectMessage object = (ObjectMessage) message;
+            try {
+                Commande commande = (Commande) object.getObject();
+            } catch (JMSException ex) {
+                Logger.getLogger(ReceiverAffaire.class.getName()).log(Level.SEVERE, null, ex);
+            }
                 System.out.println("Object message dans receiver affaire : " + object);        
             }         
         else if(message != null){

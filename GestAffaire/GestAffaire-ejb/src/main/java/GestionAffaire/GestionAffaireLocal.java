@@ -6,6 +6,7 @@
 package GestionAffaire;
 
 import com.sharedaffaire.Affaire;
+import com.sharedcommande.Commande;
 import javafx.util.Pair;
 import javax.ejb.Local;
 
@@ -17,7 +18,8 @@ import javax.ejb.Local;
 public interface GestionAffaireLocal {
     public void MAJAffaire(Affaire affaire);
     public void createAffaire(String nomClient, String prenomClient, String adressePostale, String adresseMail,
-            int telephone, double coordonneeSpatiale);
+            int telephone, int coordonneeSpatiale);
      public void senderAffaireSujet(Affaire affaire);
+     public void redirigerCommandeAchats(Commande Commande);
     
 }

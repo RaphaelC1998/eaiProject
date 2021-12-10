@@ -5,47 +5,47 @@
  */
 package com.GestionAffaireJMS;
 
-import com.sharedaffaire.Affaire;
+import com.sharedcommande.Commande;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.util.Pair;
 import javax.jms.Connection;
+import javax.jms.Message;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
+import javax.jms.JMSConsumer;
 import javax.jms.JMSException;
-import javax.jms.Message;
+import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
 import javax.jms.ObjectMessage;
 import javax.jms.Session;
+import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-
 /**
  *
  * @author Raph
  */
-public class SenderMAJSujetAffaire {
+public class SenderCommandeToAchat {
     
-    private Message createJMSMessageForSUJET_AFFAIRE(Session session, Object messageData) throws JMSException {
-        ObjectMessage om = session.createObjectMessage((Affaire)messageData);
+    private Message createJMSMessageForDIFFUSION_COMMANDE(Session session, Object messageData) throws JMSException {
+        ObjectMessage om = session.createObjectMessage((Commande)messageData);
         return om;
     }
-    //Envoyer les titres dans le topic app distributeur
 
-    public void sendJMSMessageToSUJET_AFFAIRE(Object messageData) throws JMSException, NamingException {
+    public void sendJMSMessageToGESTIONACHATS(Object messageData) throws JMSException, NamingException {
         Context c = new InitialContext();
         ConnectionFactory cf = (ConnectionFactory) c.lookup("jms/myConnectionFactory");
         Connection conn = null;
         Session s = null;
-        System.out.println("dans le sender");
         try {
             conn = cf.createConnection();
             s = conn.createSession(false, s.AUTO_ACKNOWLEDGE);
-            Destination destination = (Destination) c.lookup("SujetAffaire");
+            Destination destination = (Destination) c.lookup("FileCommandeToAchats");
             MessageProducer mp = s.createProducer(destination);
-            mp.send(createJMSMessageForSUJET_AFFAIRE(s, messageData));
-            System.out.println("message envoyé");
+            mp.send(createJMSMessageForDIFFUSION_COMMANDE(s, messageData));
         } finally {
             if (s != null) {
                 try {

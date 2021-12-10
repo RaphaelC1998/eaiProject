@@ -22,7 +22,7 @@ import javax.naming.NamingException;
 @Stateless
 public class GestionAchat implements GestionAchatLocal {
     
-    private static final ArrayList<Commande> titresEnStock = new ArrayList<Commande>();
+    private static final ArrayList<Commande> commandesEnStock = new ArrayList<Commande>();
     private static int idTCommande = 0;
 
     // Add business logic below. (Right-click in editor and choose
@@ -31,8 +31,7 @@ public class GestionAchat implements GestionAchatLocal {
     
   
     @Override
-    public void traiterCommande(Commande commande){
-       Boolean accepter = true ;
+    public void traiterCommande(Commande commande, Boolean accepter){
        accepter = verifAccepter(commande);
        Pair<Commande, Boolean> pairAcceptation = new Pair<>(commande, accepter);
        System.out.println("boolean " + accepter);
